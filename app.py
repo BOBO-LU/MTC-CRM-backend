@@ -14,14 +14,14 @@ CONFIG = DefaultConfig()
 def home():
 
     print('get')
-    insert(CONFIG)
+    # insert(CONFIG)
     return "<h1>Hello Flask!</h1>"
 
 
 @app.route('/p', methods=['POST'])
 def connectDB():
     print('connect db')
-    print(request.data)
+    # print(request.data)
     return "connect db"
 
 # if __name__ == "__main__":
