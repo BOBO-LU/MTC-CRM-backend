@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-# from sqltest import insert
+from sqltest import insert
 # from config import DefaultConfig
 
 app = Flask(__name__)
@@ -13,5 +13,4 @@ def hello():
 @app.route('/p', methods=['POST'])
 def connectDB():
     print('connect db')
-    # print(request.data)
     return "connect db"
