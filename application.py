@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
-from sqltest import insert
-from config import DefaultConfig
+# from sqltest import insert
+# from config import DefaultConfig
 
 app = Flask(__name__)
 
