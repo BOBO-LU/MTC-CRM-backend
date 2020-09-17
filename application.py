@@ -18,7 +18,7 @@ def connectDB():
     return "connect db"
 
 @app.route('/test', methods=['POST'])
-def connectDB():
+def connectDBtest():
     print(request.data.decode('utf-8'))
     print(type(request.data))
     insert_test()
