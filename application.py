@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
 from sqltest import insert, insert_test
+import os
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
