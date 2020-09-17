@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
 from sqltest import insert, insert_test
+from config import DefaultConfig
 import os
 import logging
 app = Flask(__name__)
@@ -12,12 +13,18 @@ app.config["DEBUG"] = True
 
 
 logging.debug('start app')
-
-CORS(app)
+try:
+    CORS(app)
+except Exception as e:
+    logging.error('cors: ', e)
 
 logging.debug('start cors')
 
-DBCONFIG = os.environ["ConnectionString"]
+try: 
+    DBCONFIG = os.environ["ConnectionString"]
+except Exception as e:
+    DBCONFIG = DefaultConfig()
+    logging.error("dbconfig")
 
 logging.debug('get conneection string: ', DBCONFIG)
 
