@@ -7,56 +7,56 @@ app = Flask(__name__)
 
 
 
-app.config["DEBUG"] = True
+# app.config["DEBUG"] = True
 
 
-print('start app')
-try:
-    CORS(app)
-except Exception as e:
-    print('cors: ', e)
+# print('start app')
+# try:
+#     CORS(app)
+# except Exception as e:
+#     print('cors: ', e)
 
-print('start cors')
+# print('start cors')
 
-try: 
-    DBCONFIG = os.environ["ConnectionString"]
-except Exception as e:
-    DBCONFIG = DefaultConfig()
-    print("dbconfig")
+# try: 
+#     DBCONFIG = os.environ["ConnectionString"]
+# except Exception as e:
+#     DBCONFIG = DefaultConfig()
+#     print("dbconfig")
 
-print('get conneection string: ', DBCONFIG)
+# print('get conneection string: ', DBCONFIG)
 
 
-@app.route("/")
+# @app.route("/")
 def hello():
     print('start hello')
-    loggind.debug("DBCONFIG: ", DBCONFIG)
+    print("DBCONFIG: ", DBCONFIG)
     return DBCONFIG
 
 
-@app.route('/courselist', methods=['POST'])
-def connectDB():
-    print('start connect DB')
-    print(request.data.decode('utf-8'))
-    print(type(request.data))
-    try:
-        insert(DBCONFIG)
-    except Exception as e:
-        print('connectDB error: ', e)
-    print('finish DB')
-    return "connect db"
+# @app.route('/courselist', methods=['POST'])
+# def connectDB():
+#     print('start connect DB')
+#     print(request.data.decode('utf-8'))
+#     print(type(request.data))
+#     try:
+#         insert(DBCONFIG)
+#     except Exception as e:
+#         print('connectDB error: ', e)
+#     print('finish DB')
+#     return "connect db"
 
-@app.route('/test', methods=['POST'])
-def connectDBtest():
-    print('start connect DB test')
-    print(request.data.decode('utf-8'))
-    print(type(request.data))
-    try:
-        insert_test(DBCONFIG)
-    except Exception as e:
-        print('connectDB error: ', e)
-    print('finsih DB test')
-    return "connect db"
+# @app.route('/test', methods=['POST'])
+# def connectDBtest():
+#     print('start connect DB test')
+#     print(request.data.decode('utf-8'))
+#     print(type(request.data))
+#     try:
+#         insert_test(DBCONFIG)
+#     except Exception as e:
+#         print('connectDB error: ', e)
+#     print('finsih DB test')
+#     return "connect db"
 
 # from flask import Flask, request, render_template
 # from flask_cors import CORS
