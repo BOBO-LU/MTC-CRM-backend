@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
+from sqltest import insert, insert_test
 app = Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
@@ -13,6 +14,14 @@ def hello():
 def connectDB():
     print(request.data.decode('utf-8'))
     print(type(request.data))
+    insert()
+    return "connect db"
+
+@app.route('/test', methods=['POST'])
+def connectDB():
+    print(request.data.decode('utf-8'))
+    print(type(request.data))
+    insert_test()
     return "connect db"
 
 # from flask import Flask, request, render_template
