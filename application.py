@@ -1,15 +1,18 @@
-from flask import Flask
+from flask import Flask, request, render_template
+from flask_cors import CORS
 app = Flask(__name__)
-
+app.config["DEBUG"] = True
+CORS(app)
 
 @app.route("/")
 def hello():
     return "Hello World!"
 
 
-@app.route('/p', methods=['POST'])
+@app.route('/courselist', methods=['POST'])
 def connectDB():
-    print('connect db')
+    print(request.data.decode('utf-8'))
+    print(type(request.data))
     return "connect db"
 
 # from flask import Flask, request, render_template
