@@ -5,23 +5,25 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
 
+DBCONFIG = os.environ["ConnectionString"]
+
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return DBCONFIG
 
 
 @app.route('/courselist', methods=['POST'])
 def connectDB():
     print(request.data.decode('utf-8'))
     print(type(request.data))
-    insert()
+    insert(DBCONFIG)
     return "connect db"
 
 @app.route('/test', methods=['POST'])
 def connectDBtest():
     print(request.data.decode('utf-8'))
     print(type(request.data))
-    insert_test()
+    insert_test(DBCONFIG)
     return "connect db"
 
 # from flask import Flask, request, render_template
